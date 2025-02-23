@@ -12,7 +12,14 @@
       rel="stylesheet"
     />
 
-    <title>Hello | Love</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Random Hearts</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
       @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap");
@@ -37,8 +44,8 @@
         color: #ff3366;
       }
       .message {
-        font-family: "Great Vibes", cursive;
-        font-size: 38px;
+        font-family: "Poppins", sans-serif;
+
         color: #fff;
         position: relative;
         z-index: 10;
@@ -46,15 +53,15 @@
       }
       @keyframes loveGlow {
         0% {
-          text-shadow: 0 0 10px #ff6699, 0 0 20px #ff3366;
+          text-shadow: 0 0 10px #fff, 0 0 20px #000;
           transform: scale(1);
         }
         50% {
-          text-shadow: 0 0 20px #ff99cc, 0 0 30px #ff6699;
+          text-shadow: 0 0 20px #fff, 0 0 30px #000;
           transform: scale(1.1);
         }
         100% {
-          text-shadow: 0 0 10px #ff6699, 0 0 20px #ff3366;
+          text-shadow: 0 0 10px #fff, 0 0 20px #000;
           transform: scale(1);
         }
       }
@@ -75,7 +82,11 @@
     </style>
   </head>
   <body>
-    <div class="message" id="message">I have something for you ❤️</div>
+    <section class="message content" id="sec1">
+      <h3 id="message" style="color: white; font-size: 3rem">
+        I have something for you ❤️
+      </h3>
+    </section>
     <script>
       const emojis = [
         "❤️",
