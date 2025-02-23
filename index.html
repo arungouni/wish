@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Random Hearts</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
+      @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap");
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: rgba(28, 28, 30);
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+      }
+      .countdown {
+        font-family: "Sacramento", cursive;
+        font-size: 60px;
+        font-weight: bold;
+        color: #ff3366;
+      }
+      .message {
+        font-family: "Great Vibes", cursive;
+        font-size: 38px;
+        color: #fff;
+        position: relative;
+        z-index: 10;
+        animation: loveGlow 3s infinite alternate ease-in-out;
+      }
+      @keyframes loveGlow {
+        0% {
+          text-shadow: 0 0 10px #ff6699, 0 0 20px #ff3366;
+          transform: scale(1);
+        }
+        50% {
+          text-shadow: 0 0 20px #ff99cc, 0 0 30px #ff6699;
+          transform: scale(1.1);
+        }
+        100% {
+          text-shadow: 0 0 10px #ff6699, 0 0 20px #ff3366;
+          transform: scale(1);
+        }
+      }
+      @keyframes beat {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.3);
+        }
+      }
+      .heart {
+        position: absolute;
+        font-size: 24px;
+        user-select: none;
+        animation: beat 1s infinite alternate ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message" id="message">I have something for you ❤️</div>
+    <script>
+      const emojis = [
+        "❤️",
+        "💕",
+        "💞",
+        "💘",
+        "😘",
+        "😍",
+        "☆",
+        "☆",
+        "☆",
+        "⭐",
+        "💜",
+        "🫰 ",
+      ];
+      const messages = [
+        "I have something for you ❤️",
+        "Today is a special day! 🎉",
+        "Your smile makes my world brighter! 😊💕",
+        "Let’s celebrate your special day with love and joy! 🎊💝",
+      ];
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        heart.classList.add("heart");
+        document.body.appendChild(heart);
+
+        let x, y;
+        do {
+          x = Math.random() * window.innerWidth;
+          y = Math.random() * window.innerHeight;
+        } while (
+          y > window.innerHeight / 2 - 50 &&
+          y < window.innerHeight / 2 + 50
+        );
+
+        heart.style.left = `${x}px`;
+        heart.style.top = `${y}px`;
+      }
+
+      function changeMessage() {
+        const messageElement = document.getElementById("message");
+        let index = 0;
+        setInterval(() => {
+          messageElement.innerText = messages[index];
+          index = (index + 1) % messages.length;
+        }, 3000);
+      }
+
+      function startCountdown() {
+        const countdownElement = document.getElementById("countdown");
+        let count = 10;
+        const interval = setInterval(() => {
+          countdownElement.innerText = count;
+          if (count === 0) {
+            countdownElement.style.display = "none";
+            clearInterval(interval);
+          }
+          count--;
+        }, 1000);
+      }
+
+      for (let i = 0; i < 33; i++) {
+        createHeart();
+      }
+
+      startCountdown();
+      changeMessage();
+    </script>
+  </body>
+</html>
